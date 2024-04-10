@@ -22,8 +22,8 @@
         {{ uploadedFile }}
       </template>
     </div>
-    <div class="flex items-center justify-center w-full mt-2">
-      <label :id="inputId" class="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+    <div :id="inputId"  class="flex items-center justify-center w-full mt-2">
+      <label class="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
              :for="name">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg aria-hidden="true" class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
