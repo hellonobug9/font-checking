@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "v-onboarding": "^2.8.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {

@@ -104,3 +104,9 @@ button:focus-visible {
 .highlighted-text::selection {
   background: green; /* Đặt màu nền là màu vàng */
 }
+
+.v-onboarding-item__header-close {
+  padding: 0 !important;
+  border-color: transparent !important;
+  outline: transparent !important;
+}

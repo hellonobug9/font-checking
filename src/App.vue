@@ -1,5 +1,6 @@
 <template>
   <div class="p-5">
+    <VOnboardingWrapper ref="wrapper" :steps="steps" />
     <Comps @on-select-comp="handleSelectComp" name="red"/>
     <div class="mt-10 flex flex-col">
       <div style="box-shadow: 0 8px 30px rgb(0,0,0,0.12);" class="grid grid-cols-2 divide-x w-full">
@@ -25,13 +26,37 @@
 import FontChecking from "./components/FontChecking.vue";
 import Comps from "./components/Comps.vue";
 import {compNameItems, CompNames} from "./constants.ts";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import { VOnboardingWrapper, useVOnboarding } from 'v-onboarding'
 
 const selectedComp = ref(compNameItems[0]);
-
 const handleSelectComp = (compName: CompNames) => {
   selectedComp.value = compName;
 };
+const wrapper = ref(null)
+const { start, goToStep, finish } = useVOnboarding(wrapper)
+const steps = [
+  { attachTo: { element: '#font-left' }, content: {
+      title: "GS Pione font",
+      description: "These buttons are designed with the GS Pione font. The text and icon are NOT centered evenly."
+    } },
+  { attachTo: { element: '#font-right' }, content: {
+      title: "Montserrat font",
+      description: "Meanwhile these buttons are designed with the Montserrat font. The text and icon are centered evenly."
+    } },
+  { attachTo: { element: '#font-right-input' }, content: {
+      title: "Upload font here...",
+      description: "You can upload a font file here to see how it looks in the design."
+    } }
+]
+onMounted(() => {
+  let isFirstLoadInSession = sessionStorage.getItem("isFirstLoadInSession");
+  if(!isFirstLoadInSession) {
+    start();
+    sessionStorage.setItem("isFirstLoadInSession", "true")
+  }
+})
+
 </script>
 
 <style scoped>

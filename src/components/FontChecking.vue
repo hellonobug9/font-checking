@@ -1,7 +1,7 @@
 <template>
   <div class="p-5 flex flex-col" style="min-height: 70vh; width: 100%">
     <div class="flex-1">
-      <component :is="comp" :style="{ fontFamily: name }"/>
+      <component :is="comp" :style="{ fontFamily: name }" :name="name" />
     </div>
     <div class="text-md flex justify-end items-center gap-0.5 h-5 mt-5">
       <template v-if="uploadedFile">
@@ -23,7 +23,7 @@
       </template>
     </div>
     <div class="flex items-center justify-center w-full mt-2">
-      <label class="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+      <label :id="inputId" class="flex flex-col items-center justify-center w-full h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
              :for="name">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg aria-hidden="true" class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
@@ -67,7 +67,7 @@ const components = {
   [CompNames.Card]: CardComp,
   [CompNames.Button]: ButtonComp,
 };
-
+const inputId = `${props.name}-input`;
 const comp = computed(() => components[props.comp as CompNames]);
 const previewFont = (event: Event) => {
   const files = (event.target as HTMLInputElement).files;
@@ -83,7 +83,6 @@ const previewFont = (event: Event) => {
         document.fonts.add(loadedFont);
       });
     };
-
     reader.readAsArrayBuffer(file);
   }
 };
