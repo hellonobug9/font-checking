@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
     <VOnboardingWrapper ref="wrapper" :steps="steps" />
-    <Comps @on-select-comp="handleSelectComp" name="red"/>
+    <Comps id="comps" @on-select-comp="handleSelectComp" name="red"/>
     <div class="mt-10 flex flex-col">
       <div style="box-shadow: 0 8px 30px rgb(0,0,0,0.12);" class="grid grid-cols-2 divide-x w-full">
         <div><FontChecking :default-file="'GSPione-Regular_20211006.otf'" :name="'font-left'" :comp="selectedComp"/></div>
@@ -47,6 +47,10 @@ const steps = [
   { attachTo: { element: '#font-right-input' }, content: {
       title: "Upload font here...",
       description: "You can upload a font file here to see how it looks in the design."
+    } },
+  { attachTo: { element: '#comps' }, content: {
+      title: "Demos font upload...",
+      description: "You can see more demos by selecting different components in here."
     } }
 ]
 onMounted(() => {
