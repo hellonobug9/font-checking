@@ -1,6 +1,6 @@
 <template>
   <div class="p-5 flex flex-col" style="min-height: 70vh; width: 100%">
-    <div class="flex-1">
+    <div class="flex-1 flex justify-center items-center">
       <component :is="comp" :style="{ fontFamily: name }" :name="name" />
     </div>
     <div class="text-md flex justify-end items-center gap-0.5 h-5 mt-5">

@@ -1,6 +1,5 @@
 <template>
   <div class="p-5">
-    <VOnboardingWrapper ref="wrapper" :steps="steps" />
     <Comps id="comps" @on-select-comp="handleSelectComp" name="red"/>
     <div class="mt-10 flex flex-col">
       <div style="box-shadow: 0 8px 30px rgb(0,0,0,0.12);" class="grid grid-cols-2 divide-x w-full">
@@ -20,6 +19,7 @@
         </template>
       </p>
     </div>
+    <VOnboardingWrapper ref="wrapper" :steps="steps" />
   </div>
 </template>
 <script setup lang="ts">
@@ -36,11 +36,11 @@ const handleSelectComp = (compName: CompNames) => {
 const wrapper = ref(null)
 const { start } = useVOnboarding(wrapper)
 const steps = [
-  { attachTo: { element: '#font-left' }, content: {
+  { attachTo: { element: '#font-left-btn' }, content: {
       title: "GS Pione font",
       description: "These buttons are designed with the GS Pione font. The text and icon are NOT centered evenly."
     } },
-  { attachTo: { element: '#font-right' }, content: {
+  { attachTo: { element: '#font-right-btn' }, content: {
       title: "Montserrat font",
       description: "Meanwhile these buttons are designed with the Montserrat font. The text and icon are centered evenly."
     } },
@@ -54,11 +54,13 @@ const steps = [
     } }
 ]
 onMounted(() => {
-  let isFirstLoadInSession = sessionStorage.getItem("isFirstLoadInSession");
-  if(!isFirstLoadInSession) {
-    start();
-    sessionStorage.setItem("isFirstLoadInSession", "true")
-  }
+  setTimeout(() => {
+    let isFirstLoadInSession = sessionStorage.getItem("isFirstLoadInSession");
+    if(!isFirstLoadInSession) {
+      start();
+      sessionStorage.setItem("isFirstLoadInSession", "true")
+    }
+  }, 250);
 })
 
 </script>
