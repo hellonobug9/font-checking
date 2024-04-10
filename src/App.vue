@@ -34,7 +34,7 @@ const handleSelectComp = (compName: CompNames) => {
   selectedComp.value = compName;
 };
 const wrapper = ref(null)
-const { start, goToStep, finish } = useVOnboarding(wrapper)
+const { start } = useVOnboarding(wrapper)
 const steps = [
   { attachTo: { element: '#font-left' }, content: {
       title: "GS Pione font",
