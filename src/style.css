@@ -1,6 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'font-left';
+  src: url('./assets/fonts/GSPione/GSPione-Regular_20211006.otf'),
+  url('./assets/fonts/GSPione/GSPione-Bold_20211006.otf'),
+  url('./assets/fonts/GSPione/GSPione-Italic_20211130.otf');
+}
+
+@font-face {
+  font-family: 'font-right';
+  src: url('./assets/fonts/Montserrat/Montserrat-Medium.otf')
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

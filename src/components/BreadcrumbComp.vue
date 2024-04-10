@@ -1,10 +1,9 @@
 <template>
   <nav aria-label="Breadcrumb">
-    <ol class="flex items-center gap-1 text-gray-600" style="font-size: 50px">
+    <ol class="flex items-center gap-1 text-gray-600" style="font-size: 30px">
       <li>
         <a href="#" class="block transition">
           <span class="sr-only"> Home </span>
-
           <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"

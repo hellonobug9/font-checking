@@ -1,5 +1,6 @@
 export enum CompNames {
+    Button = "Button",
     Breadcrumb = "Breadcrumb",
     Card = "Card",
-    // Button = "Button",
 }
+export const compNameItems = Object.values(CompNames);

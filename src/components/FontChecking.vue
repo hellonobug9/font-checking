@@ -1,13 +1,12 @@
 <template>
   <div class="p-5 flex flex-col" style="min-height: 70vh; width: 100%">
     <div class="flex-1">
-          <BreadcrumbComp v-if="comp === CompNames.Breadcrumb" :style="{ fontFamily: name }"/>
-          <CardComp v-if="comp === CompNames.Card" :style="{ fontFamily: name }"/>
+      <component :is="comp" :style="{ fontFamily: name }"/>
     </div>
-    <div class="text-sm flex justify-end items-center gap-0.5 h-5 mt-5">
+    <div class="text-md flex justify-end items-center gap-0.5 h-5 mt-5">
       <template v-if="uploadedFile">
-        <svg id="Layer_1" fill="#000000" height="12px" version="1.1" viewBox="0 0 507.2 507.2"
-             width="12px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+        <svg id="Layer_1" fill="#000000" height="14px" version="1.1" viewBox="0 0 507.2 507.2"
+             width="14px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -34,18 +33,19 @@
           </svg>
           <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload a font file</span>
           </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">OTF files</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">OTF, TTF files</p>
         </div>
-        <input :id="name" accept=".otf" class="hidden" type="file" @change="previewFont"/>
+        <input :id="name" accept=".otf, .ttf" class="hidden" type="file" @change="previewFont"/>
       </label>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import {defineProps, ref} from 'vue'
+import {computed, defineProps, ref} from 'vue'
 import {CompNames} from "../constants.ts";
 import CardComp from "./CardComp.vue";
 import BreadcrumbComp from "./BreadcrumbComp.vue";
+import ButtonComp from "./ButtonComp.vue";
 
 const props = defineProps({
   name: {
@@ -55,9 +55,20 @@ const props = defineProps({
   comp: {
     type: String,
     required: true
+  },
+  defaultFile: {
+    type: String,
+    required: true
   }
 })
-const uploadedFile = ref("");
+const uploadedFile = ref(props.defaultFile);
+const components = {
+  [CompNames.Breadcrumb]: BreadcrumbComp,
+  [CompNames.Card]: CardComp,
+  [CompNames.Button]: ButtonComp,
+};
+
+const comp = computed(() => components[props.comp as CompNames]);
 const previewFont = (event: Event) => {
   const files = (event.target as HTMLInputElement).files;
   if (!files) return;
