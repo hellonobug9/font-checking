@@ -1,8 +1,8 @@
 <template>
-  <div class="p-5">
+  <div class="p-5 bg-white rounded-lg px-8">
     <Comps id="comps" @on-select-comp="handleSelectComp" name="red"/>
     <div class="mt-10 flex flex-col">
-      <div style="box-shadow: 0 8px 30px rgb(0,0,0,0.12);" class="grid grid-cols-2 divide-x w-full">
+      <div style="box-shadow: 0 8px 30px rgb(0,0,0,0.12);" class="grid grid-cols-2 divide-x w-full rounded-lg">
         <div><FontChecking :default-file="'GSPione-Regular_20211006.otf'" :name="'font-left'" :comp="selectedComp"/></div>
         <div><FontChecking :default-file="'Montserrat-Medium.otf'" :name="'font-right'" :comp="selectedComp"/></div>
       </div>
