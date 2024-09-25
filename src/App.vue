@@ -287,7 +287,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineComponent, h, ref } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
