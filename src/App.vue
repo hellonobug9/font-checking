@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-      <div class="mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8">
+      <div class="mx-auto mt-32 max-w-7xl sm:mt-40 px-6 lg:px-8">
         <iframe class="w-full mt-20 rounded-md overflow-hidden border" style="height: 720px" src="https://1a5c-113-190-254-72.ngrok-free.app/"></iframe>
       </div>
       <!-- Content section -->
